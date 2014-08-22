@@ -49,7 +49,7 @@ class Cart:
             item.quantity = item.quantity + int(quantity)
             item.save()
 
-    def subtract(self, product, unit_price, quantity=1):
+    def subtract(self, product, quantity=1):
         try:
             item = models.Item.objects.get(
                 cart=self.cart,
