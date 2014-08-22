@@ -49,6 +49,20 @@ class Cart:
             item.quantity = item.quantity + int(quantity)
             item.save()
 
+    def subtract(self, product, unit_price, quantity=1):
+        try:
+            item = models.Item.objects.get(
+                cart=self.cart,
+                product=product,
+            )
+        except models.Item.DoesNotExist:
+            pass
+        else: #ItemAlreadyExists
+            #item.unit_price = unit_price
+            item.quantity = item.quantity - int(quantity)
+            item.save()
+
+
     def remove(self, product):
         try:
             item = models.Item.objects.get(
